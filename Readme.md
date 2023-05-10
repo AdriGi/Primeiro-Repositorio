@@ -1,9 +1,10 @@
 #Git Course 
-Este é um repositório para ver como o git funciona
-Saiba mais em [perfil](https://www.linkedin.com/in/adriano1996/)
+
+Primeiro repositório usado para testar comandos do git e github. O conteúdo pode ser encontrado no arquivo em curso_de_Git.pdf, além disso todas as anotações foram baseadas nas aulas do Willian Justen de Vasconcellos, [Git e Github para iniciantes](https://www.udemy.com/course/git-e-github-para-iniciantes/).
+
+Mais sobre mim pode ser encontrado nesse [linkl](https://www.linkedin.com/in/adriano1996/)
 
 
 
-Gostou de mim? Quer me contratar? Só chamar!!!
-
-Obrigado!
+Me chama pra um bico
+Obrigado
