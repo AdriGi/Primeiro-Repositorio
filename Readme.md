@@ -47,7 +47,7 @@ Para inserir texto basta aperta a letra **i**, depois de escrever tudo aperta a 
 
 ### O ciclo de vida dos status de seus arquivos
 
-<img src="imagens/ciclo_de_vida.png" width="500" height="500">
+<img src = imagens/ciclo_de_vida.png>
 
 
 
