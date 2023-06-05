@@ -47,8 +47,8 @@ Para inserir texto basta aperta a letra **i**, depois de escrever tudo aperta a 
 
 ### O ciclo de vida dos status de seus arquivos
 
-![ciclo_de_vida.png](attachment:ciclo_de_vida.png)
+<img src="imagens/ciclo_de_vida.png" width="500" height="500">
 
-<img src = "ciclo_de_vida.png" width ="200" height="200">
+
 
 
