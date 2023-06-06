@@ -1,4 +1,4 @@
-Primeiro repositório usado para testar comandos do git e github. O conteúdo pode ser encontrado no arquivo em curso_de_Git.pdf, além disso todas as anotações foram baseadas nas aulas do Willian Justen de Vasconcellos, [Git e Github para iniciantes](https://www.udemy.com/course/git-e-github-para-iniciantes/). O material encontra-se em pdf, mas também pode ser visto neste Readme.
+Primeiro repositório usado para testar comandos do git e github. O conteúdo pode ser encontrado no arquivo em curso_de_Git.pdf, além disso todas as anotações foram baseadas nas aulas do Willian Justen de Vasconcellos, [Git e Github para iniciantes](https://www.udemy.com/course/git-e-github-para-iniciantes/). O material encontra-se organizado em pdf, mas também pode ser visto neste Readme.
 
 Mais sobre mim pode ser encontrado nesse [link](https://www.linkedin.com/in/adriano1996/)
 
@@ -6,7 +6,12 @@ Me chama pra um bico
 
 Obrigado
 
-# Curso de Git e Github
+
+<h2 align="center"> Curso de Git e Github
+
+<img src="imagens/capa.png">
+
+</h2>
 
 ## Seção 1: Entendendo o que é o Git e Github
 
@@ -47,7 +52,122 @@ Para inserir texto basta aperta a letra **i**, depois de escrever tudo aperta a 
 
 ### O ciclo de vida dos status de seus arquivos
 
-<img src="imagens/ciclo.png" width="1000" height="700">
+<p align="center">
+<img src="imagens/ciclo.png" width="800" height="450">
+</p>
+
+
+Comando para reportar como está o repositório no momento: git status 
+
+Provavelmente não vai aparecer nada para “commitar,” significa que não foi lançado para edição. Se houve alguma edição no arquivo, quando dar o comando git status vai aparecer o arquivo em *untracked*. Assim, precisa dar o comando `git add NomeDoArquivo`. Assim, o arquivo aparecerá na lista de *commited*, daí será criada uma versão. Caso tenha alguma modificação no arquivo, então precisa aplicar o comando `git add NomeDoArquivo` de novo para que as modificações sejam levadas para o *commited*. Finalmente, quando terminar tudo pode aplicar o comando `git commit -m “Add NomeDoArquivo”` para versionar/salvar as modificações, isso quer dizer que ele vai pegar todos os arquivos do repositório e criará uma imagem dele (*snapshot*). É uma boa prática colocar algum comentário das modificações feitas. Pois através dos *logs* as pessoas conseguem se localizar melhor.
+
+Vai reparar que ele vai criar um commit segundo o nome que você dará no *branch* atual e uma *hash* criada no momento do comando, que é o número que fica ao lado do comentário feito. O *hash* é uma identificação do versionamento, nunca será repetido. Depois dá um descritivo do que foi alterado.
+
+### Visualizando logs
+
+Quando você deseja ver o histórico dos arquivos criados e modificados é interessante conhecer:  `git log`, ele mostra o autor e data das modificações.
+
+`git log --decorate`, mostra informações de qual *branch* para qual *branch*.
+
+Pode fazer filtragens de acordo com o autor: `git log --author=”nome”`
+
+`git shortlog`, mostra para gente, em ordem alfabética, quais foram os autores, quantos *commit* fizeram e quais foram. Se quiser ver apenas a quantidade de *commit* e nome, basta: `git shortlog -sn`. 
+
+`git log --graph`, mostra de forma gráfica o que aconteceu com o *branch* e as versões.
+
+Com o `git show hash` (hash: é o número do commit), você consegue ver os detalhes das modificações do arquivo.
+
+### Visualizando o diff
+
+Serve para ver as mudanças antes de enviar para o *commit*. 
+
+`git diff`, detalha as mudanças que houve no arquivo. É interessante fazer o *diff* antes do commit como uma forma de inspeção.
+
+Dentro do `git diff`, temos a opção do *name only*, para dizer apenas o nome do arquivo que foi modificado. O comando: `git diff --name-only`. Ele vai listar.
+
+Quando for comitar um arquivo que já existiu pode usar o `comando: git commit -am “comentário”`
+
+### Desfazendo coisas
+
+Resetar informações ou voltar no tempo. O comando `git checkout NomeDoArquivo`, ele retorna o arquivo para antes da última edição feita. Caso tenha levado essa mudança para o *stage* (lista do *commited*), pode aplicar o comando: `git reset HEAD NomeDoArquivo`. 
+Caso tenha dado um *commit* errado, pode voltar pelos comandos:
+
+* `git reset --soft HASH`, ele tira do commit e deixa no estágio de *commit*;
+* `git reset --mixed HASH`, ele tira do commit e deixa no estágio *modified*;
+* `git reset --hard HASH`, ele vai ignorar a existência desse *commit* e deletar tudo que foi feito do *commit*.
+
+Obs: precisa escolher a *HASH* que quer retornar.
+
+## Seção 4: Repositórios Remotos
+
+É uma nuvem onde vai ficar armazenado seus códigos, arquivos, etc.
+
+### Criando e adicionando uma chave SSH
+
+*SSH* é um protocolo que serve para autenticar um usuário remoto ao servidor. Existe uma chave privada e uma chave pública. O link detalha mais sobre o assunto: [link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+
+No link mostra como criar e adicionar uma chave. A chave fica oculta, então precisa acessa via `cd ~/.ssh/`.
+
+Se der um comando `ls`, vai aparecer um arquivo *id_rsa.pub*. Para pegar a chave basta dar o comando `cat id_rsa.pub` ou `more id_rsa.pub` ou abrir em algum editor de texto. Para passar a chave no Github, vai em *settings*, procura *SSH and GPG Keys*, clica em *New SSH key*.
+
+### Ligando repositório local a um remoto
+
+Pode ir até o seu repositório e lá dá uma lista dos passos que você precisa fazer para criar/ligar um repositório. Por exemplo:
+
+<p align="center">
+<img src="imagens/repositorio_nuvem.png" width="700" height="500">
+</p>
+
+O *origin* é apenas um nome, eu poderia mudar se quiser.
+
+O comando: `git remote`, mostra o repositório existente e o comando `git remote -v` vai mostrar os endereços.
+
+O comando `git push -u origin master` envia os arquivos que tem, os *logs* e as modificações. O *u* serve para não precisar repetir todo o comando depois, os próximos comandos mostra da onde sai e pra onde vai. Por exemplo vai sair do *master* (a pasta atual) e ir para o *origin* (a nuvem no git).
+
+### Enviando mudanças para um repositório remoto
+
+Para enviar as mudanças usar o comando: `git push origin master`, onde *origin* é o nome do repositório, como foi falado, pode ser qualquer um. E o *branch* é o *master*.
+
+### Clonando repositórios remotos
+
+Clones de repositório é feito via comando `git clone link_repositório nome`, onde em (nome) você pode dar qualquer nome. Útil quando está em uma máquina diferente e você deseja trabalhar no mesmo repositório.
+
+
+### Fazendo um fork de um projeto
+
+*Fork* pega um projeto que não é seu e faz uma cópia para você. É bom para fazer contribuições. Você faz o *fork* dentro da plataforma Github, a diferença dele para o clone, é que o clone você faz para arquivos que é seu e pode commitar, enquanto o fork você clona e deixa para o dono do projeto ver se pode commitar.
+
+
+## Seção 5: Ramificação (Branch)
+
+*Branch* é um ponteiro móvel que leva a um *commit*. Quando criamos um *commit*, cria uma *HASH* (conjunto de números e letras), cada *HASH* indica um snapshot daquele estado. Portanto o branch aponta para esse *commit*, assim o primeiro *branch* que temos se chama master. E o branch master segue o último commit dado.
+
+<p align="center">
+<img src="imagens/branch1.png" width="700" height="500">
+</p>
+
+É possível criar um novo *branch* que aponte para o mesmo *commit*:
+
+<p align="center">
+<img src="imagens/branch2.png" width="700" height="500">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
