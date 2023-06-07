@@ -7,11 +7,14 @@ Me chama pra um bico
 Obrigado
 
 
-<h2 align="center"> Curso de Git e Github
+<h2> 
+</h2>
+
+<h1 align="center"> Curso de Git e Github
 
 <img src="imagens/capa.png">
 
-</h2>
+</h1>
 
 ## Seção 1: Entendendo o que é o Git e Github
 
@@ -115,7 +118,7 @@ Se der um comando `ls`, vai aparecer um arquivo *id_rsa.pub*. Para pegar a chave
 Pode ir até o seu repositório e lá dá uma lista dos passos que você precisa fazer para criar/ligar um repositório. Por exemplo:
 
 <p align="center">
-<img src="imagens/repositorio_nuvem.png" width="700" height="500">
+<img src="imagens/repositorio_nuvem.png" width="700" height="300">
 </p>
 
 O *origin* é apenas um nome, eu poderia mudar se quiser.
@@ -143,32 +146,129 @@ Clones de repositório é feito via comando `git clone link_repositório nome`, 
 *Branch* é um ponteiro móvel que leva a um *commit*. Quando criamos um *commit*, cria uma *HASH* (conjunto de números e letras), cada *HASH* indica um snapshot daquele estado. Portanto o branch aponta para esse *commit*, assim o primeiro *branch* que temos se chama master. E o branch master segue o último commit dado.
 
 <p align="center">
-<img src="imagens/branch1.png" width="700" height="500">
+<img src="imagens/branch1.png" width="400" height="200">
 </p>
 
 É possível criar um novo *branch* que aponte para o mesmo *commit*:
 
 <p align="center">
-<img src="imagens/branch2.png" width="700" height="500">
+<img src="imagens/branch2.png" width="400" height="200">
 </p>
 
+Ou pode ter outro *branch* apontando para outro *commit*:
 
+<p align="center">
+<img src="imagens/branch3.png" width="400" height="200">
+</p>
 
+* O uso do *branch* serve para fazer alterações sem mudar o local principal (*branch master*);
+* O *branch* é facilmente “desligável”, ou seja, você pode apagar rapidamente;
+* É possível que várias pessoas trabalhem em diferentes branchs, sem que um atrapalhe o outro;
+* Por fim, evita conflitos, uma vez que cada um tem seu ambiente.
 
+### Criando um branch
 
+Para criar um *branch*, basta dar o comando:
 
+`git checkout -b NomeDoBranch`
 
+Para consultar quantos branchs tem, basta:
 
+`git branch` (a saída mostra a quantidade de *branch*, onde o asterisco indica o *branch* que você está usando no momento)
 
+### Movendo e deletando branches
 
+Para mover de um *branch* para outro basta:
 
+`git checkout NomeDoBranch`
 
+Para deletar o *branch*, basta:
 
+`git branch -D NomeDoBranch`
 
+### Entendendo o merge
 
+O *merge* é necessário para fazer a união do *branch* externo com o *branch master*. Exister duas formas de unir os branchs, sendo: *merge* e *rebase*.  
 
+Ilustrando a situação inicial do arquivo:
 
+<p align="center">
+<img src="imagens/merge1.png" width="400" height="200">
+</p>
 
+Onde temos o *branch maste*r e um *branch* externo iss53.
+
+<p align="center">
+<img src="imagens/merge2.png" width="400" height="200">
+</p>
+
+Na situação acima foi criado um novo *commit* (C3) com o *branch* externo (iss53). Repare que o *master* ainda continua apontando para o C2.
+
+<p align="center">
+<img src="imagens/merge3.png" width="400" height="200">
+</p>
+
+Na situação acima foi criado um novo *commit* a partir do *branch master* (C4).
+
+<p align="center">
+<img src="imagens/merge4.png" width="400" height="200">
+</p>
+
+Agora a situação mostra um *commit*(C5) criado a partir do *branch* iss53. Enquanto o *branch master* ficou com o último *commit*.
+
+Para fazer o *merge* é necessário criar um novo *commit* (C6), como ilustrado na situação abaixo:
+
+<p align="center">
+<img src="imagens/merge5.png" width="400" height="200">
+</p>
+
+Nota-se que fecha um ciclo dos *commit* do *branch* externo e do *master*. Esse ciclo é chamado também de forma diamante, pois cria certas pontas.
+
+<p align="center">
+<img src="imagens/merge6.png" width="400" height="200">
+</p>
+
+### Entendendo o rebase
+
+Com base no esquema inicial do *merge* (leia o item entendendo o merge), temos:
+
+<p align="center">
+<img src="imagens/rebase1.png" width="400" height="200">
+</p>
+
+O *rebase* ele une as mudanças de forma linear, pega tudo que estava no *branch* separado e coloca no início da fila (*fast forward*):
+
+<p align="center">
+<img src="imagens/rebase2.png" width="400" height="200">
+</p>
+
+Ao fim do processo você tem o *branch* externo e o *branch master* apontando para o mesmo *commit*.
+
+<p align="center">
+<img src="imagens/rebase3.png" width="400" height="200">
+</p>
+
+<p align="center">
+<img src="imagens/rebase4.png" width="400" height="200">
+</p>
+
+Conselho: Tem que tomar cuidado com conflito de arquivos uma vez que ele altera a ordem cronológica, assim ocasionando diferença de histórico para outra pessoa que esteja mexendo no mesmo arquivo.
+
+### Merge e rebase na prática
+
+#### MERGE
+
+* crie uma pasta, sem seguida entre na pasta e inicie o git;
+* Cria um arquivo foo com o vim;
+* Use o `git add` e faça o commit;
+
+<p align="center">
+<img src="imagens/merge_pratica1.png" width="400" height="200">
+</p>
+
+* Crie um *branch test*;
+* Crie um arquivo bar, add e faça *commit*;
+* Nota-se que quando dá o `git log` tem as duas mudanças feitas, mas quando olha pela ótica do *branch master* aparece só o arquivo foo.
 
 
 
