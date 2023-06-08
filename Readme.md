@@ -10,7 +10,11 @@ Obrigado
 <h2> 
 </h2>
 
-<h1 align="center"> Curso de Git e Github
+<h1 align="center"> 
+    
+<img src="imagens/capa1.png">
+    
+    Curso de Git e Github
 
 <img src="imagens/capa.png">
 
@@ -225,7 +229,7 @@ Para fazer o *merge* é necessário criar um novo *commit* (C6), como ilustrado 
 Nota-se que fecha um ciclo dos *commit* do *branch* externo e do *master*. Esse ciclo é chamado também de forma diamante, pois cria certas pontas.
 
 <p align="center">
-<img src="imagens/merge6.png" width="400" height="200">
+<img src="imagens/merge6.png" width="400" height="170">
 </p>
 
 ### Entendendo o rebase
@@ -249,7 +253,7 @@ Ao fim do processo você tem o *branch* externo e o *branch master* apontando pa
 </p>
 
 <p align="center">
-<img src="imagens/rebase4.png" width="400" height="200">
+<img src="imagens/rebase4.png" width="400" height="170">
 </p>
 
 Conselho: Tem que tomar cuidado com conflito de arquivos uma vez que ele altera a ordem cronológica, assim ocasionando diferença de histórico para outra pessoa que esteja mexendo no mesmo arquivo.
@@ -263,12 +267,45 @@ Conselho: Tem que tomar cuidado com conflito de arquivos uma vez que ele altera 
 * Use o `git add` e faça o commit;
 
 <p align="center">
-<img src="imagens/merge_pratica1.png" width="400" height="200">
+<img src="imagens/merge_pratica1.png" width="900" height="350">
 </p>
 
 * Crie um *branch test*;
 * Crie um arquivo bar, add e faça *commit*;
-* Nota-se que quando dá o `git log` tem as duas mudanças feitas, mas quando olha pela ótica do *branch master* aparece só o arquivo foo.
+* Nota-se que quando dá o `git log` tem as duas mudanças feitas, mas quando olha pela ótica do *branch master* aparece só o arquivo foo;
+
+<p align="center">
+<img src="imagens/merge_pratica2.png" width="900" height="350">
+</p>
+
+* Dentro do *branch master*, crie um arquivo fiz, add e faça o *commit*;
+* Dê o `git log` e repare que as mudanças feitas no arquivo bar no *branch test* deve entrar entre o arquivo fiz e foo (de acordo com o histórico);
+
+<p align="center">
+<img src="imagens/merge_pratica3.png" width="900" height="350">
+</p>
+
+* Faça o *merge* do *branch test* com o *master*, veja as mudanças e salve;
+
+<p align="center">
+<img src="imagens/merge_pratica4.png" width="700" height="150">
+</p>
+
+* Dê o `git log` e veja as mudanças, repare que houve a existência de um *commit* novo para adicionar o arquivo bar (add bar);
+* Pode dar o comando `git log –graph`, e repare na estrutura de ciclo, apesar do histórico linear;
+
+<p align="center">
+<img src="imagens/merge_pratica5.png" width="900" height="350">
+</p>
+
+#### REBASE
+
+
+
+
+
+
+
 
 
 
