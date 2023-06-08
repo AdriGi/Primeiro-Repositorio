@@ -1,10 +1,5 @@
 Primeiro repositório usado para testar comandos do git e github. O conteúdo pode ser encontrado no arquivo em curso_de_Git.pdf, além disso todas as anotações foram baseadas nas aulas do Willian Justen de Vasconcellos, [Git e Github para iniciantes](https://www.udemy.com/course/git-e-github-para-iniciantes/). O material encontra-se organizado em pdf, mas também pode ser visto neste Readme.
 
-Mais sobre mim pode ser encontrado nesse [link](https://www.linkedin.com/in/adriano1996/)
-
-Me chama pra um bico
-
-Obrigado
 
 
 <h2> 
@@ -19,6 +14,57 @@ Obrigado
 <img src="imagens/capa.png">
 
 </h1>
+
+# Índice
+
+* [Seção 1: Entendendo o que é o Git e Github](#Seção-1:-Entendendo-o-que-é-o-Git-e-Github)
+
+* [Seção 2: Configurando o Git](#Seção-2:-Configurando-o-Git)
+
+* [Seção 3: Essencial do Git](#Seção-3:-Essencial-do-Git)
+
+    * [Inicializando um repositório](#Inicializando-um-repositório)
+    * [Usando o editor do terminal](#Usando-o-editor-do-terminal)
+    * [O ciclo de vida dos status de seus arquivos](#O-ciclo-de-vida-dos-status-de-seus-arquivos)
+    * [Visualizando logs](#Visualizando-logs)
+    * [Visualizando o diff](#Visualizando-o-diff)
+    * [Desfazendo coisas](#Desfazendo-coisas)
+
+* [Seção 4: Repositórios Remotos](#Seção-4:-Repositórios-Remotos)
+
+    * [Criando e adicionando uma chave SSH](#Criando-e-adicionando-uma-chave-SSH)
+    * [Ligando repositório local a um remoto](#Ligando-repositório-local-a-um-remoto)
+    * [Enviando mudanças para um repositório remoto](#Enviando-mudanças-para-um-repositório-remoto)
+    * [Clonando repositórios remotos](#Clonando-repositórios-remotos)
+    * [Fazendo um fork de um projeto](#Fazendo-um-fork-de-um-projeto)
+
+* [Seção 5: Ramificação (Branch)](#Seção-5:-Ramificação-(Branch))
+
+    * [Criando um branch](#Criando-um-branch)
+    * [Movendo e deletando branches](#Movendo-e-deletando-branches)
+    * [Entendendo o merge](#Entendendo-o-merge)
+    * [Entendendo o rebase](#Entendendo-o-rebase)
+    * [Merge e rebase na prática](#Merge-e-rebase-na-prática)  
+
+* [Seção 6: Extras](#Seção-6:-Extras)
+
+    * [Criando o .gitignore](#Criando-o-.gitignore)  
+    * [Git stash](#Git-stash)  
+    * [Simplificação de comando](#Simplificação-de-comando)  
+    * [Versionamento com tags](#Versionamento-com-tags)      
+    * [Git revert](#Git-revert)      
+    * [Apagando tags e branches remotos](#Apagando-tags-e-branches-remotos)   
+
+
+
+
+
+
+
+
+
+
+
 
 ## Seção 1: Entendendo o que é o Git e Github
 
@@ -275,7 +321,7 @@ Conselho: Tem que tomar cuidado com conflito de arquivos uma vez que ele altera 
 * Nota-se que quando dá o `git log` tem as duas mudanças feitas, mas quando olha pela ótica do *branch master* aparece só o arquivo foo;
 
 <p align="center">
-<img src="imagens/merge_pratica2.png" width="900" height="350">
+<img src="imagens/merge_pratica2.png" width="900" height="450">
 </p>
 
 * Dentro do *branch master*, crie um arquivo fiz, add e faça o *commit*;
@@ -295,14 +341,113 @@ Conselho: Tem que tomar cuidado com conflito de arquivos uma vez que ele altera 
 * Pode dar o comando `git log –graph`, e repare na estrutura de ciclo, apesar do histórico linear;
 
 <p align="center">
-<img src="imagens/merge_pratica5.png" width="900" height="350">
+<img src="imagens/merge_pratica5.png" width="900" height="400">
 </p>
 
 #### REBASE
 
+* Crie um arquivo buz, add e faça o *commit*;
+* Dê um *log* e veja;
+
+<p align="center">
+<img src="imagens/rebase_pratica1.png" width="900" height="550">
+</p>
+
+* Crie um novo *branch* chamado rebase-branch;
+* Crie um arquivo chamado bla, add e faça o *commit*;
+* Veja o *log*, depois veja com o *graph* e perceberá que ainda estará linear;
+* Caso dê um `git log` pelo *branch master* o arquivo do rebase-branch não vai aparecer no histórico;
+
+<p align="center">
+<img src="imagens/rebase_pratica2.png" width="900" height="550">
+</p>
+
+* No *branch master* crie um arquivo chamado sei la, add e faça o *commit*;
+* Dê o *log*, nota-se que entre o buzz e o seila deve ter o arquivo bla do *branch* do rebase;
+
+<p align="center">
+<img src="imagens/rebase_pratica3.png" width="900" height="550">
+</p>
+
+* Com o comando `git rebase NomeDoBranch`;
+* Dê um `log ou log --graph`, nota-se que continuará linear.
+
+<p align="center">
+<img src="imagens/rebase_pratica4.png" width="900" height="550">
+</p>
+
+<p align="center">
+<img src="imagens/rebase_pratica5.png" width="900" height="550">
+</p>
+
+Dica: Enquanto estiver adicionando novos *commit* e atualizando com outros *branch* use o *rebase*. Em caso de adição de novas informações é interessante usar o *merge*.
+
+## Seção 6: Extras
+
+### Criando o .gitignore
+
+Comando usado quando tem arquivos incluído no repositório e você deseja que isso não seja compartilhado.
+
+O uso é simples, primeiro você cria um arquivo usando algum editor e salva como *.gitignore*. O ponto serve para dizer que é um arquivo oculto no linux. Dentro desse arquivo, você vai colocar as extensões ou o arquivo em específico que você deseja que não vá no *commit*. Por exemplo:
+
+<p align="center">
+<img src="imagens/rebase_pratica5.png" width="700" height="150">
+</p>
+
+Repare que o arquivo arquivo_qualquer.md não está aparecendo, pois dentro do *.gitignore* está especificado para ignorá-lo. Caso você queira ignorar um conjunto de extensões de arquivo, dentro do *.gitignore*, basta colocar *.extensão, por exemplo: *.py, *.xlsx, *.json, etc.
 
 
+Alguns links interessantes que exploram esse comando: [lista de ignore](https://github.com/github/gitignore) e [documento](https://git-scm.com/docs/gitignore)
 
+### Git stash
+
+Comando usado para guardar eventuais mudanças para depois fazer um *commit*. Pode ser usado, por exemplo, em situações que você precisa entra em outro *branch*, mas não terminou suas modificações e não deseja subir as modificações para não poluir o *log*. Basta dar o comando: 
+
+`git stash` - Ele vai guardar essa modificação, deixando em progresso (WIP).
+
+Nesse momento é possível sair e fazer outra coisa. Quando quiser, volte e dê o comando:
+
+`git stash apply` - Ele retorna com os arquivos que ainda faltam add e dar o *commit*.
+
+Existe também o comando `git stash list` que mostra os *stash* que está sendo feito. Caso queira limpar isso, basta dar o comando: `git stash clear`.
+
+### Simplificação de comando
+
+Muitas vezes se torna exaustivo digitar todo o comando, por isso é possível simplificar algum comando, por exemplo:
+
+* O comando `git status`, podemos pensar em apenas digitar *git s*;
+* Para isso use o comando: `git config --global alias.simplifcacao comando`;
+* Por exemplo: `git config --global alias.s status`.
+
+### Versionamento com tags
+
+Usado quando estamos trabalhando com bibliotecas ou sistemas muito grandes, estamos mexendo com o estado desses sistemas a cada *commit* dado. Então é interessante ter um marcador dessas versões, seja a cada 10 commit ou simplesmente assumir uma parte do projeto que tenha mudança suficiente para ser uma nova versão.
+
+* Para criar uma *tag*, basta: `git tag` ; 
+* Se quiser passar uma *tag* com anotação: `git tag -a versão -m “anotação”` (por exmeplo: `git tag -a 1.0.0 -m “arquivo finalizado”`);
+* Quando quiser subir a tag para o github: `git push origin master --tags`, repare que lá no github terá uma release nova, inclusive com o código da versão da *tag* lançada.
+
+### Git revert
+
+Diferente do `git reset`, ele não apaga as modificações. É uma espécie de control z, é usado quando você não deseja apagar as modificações, pois nem tudo ali está errado. Mas ao mesmo tempo você não deseja corrigir no momento. O `git revert` é dado quando depois que você fez o *commit*, usando o comando: 
+
+`git revert HASH` (precisa buscar a HASH do *commit* em questão)
+
+Quando dar um `git log`, perceberá que o comando `git revert` cria um novo *commit*, e pode pegar a HASH desse novo *commit* e ver as mudanças que ocorreram usando o comando `git show HASH`. Perceberá que ele retornou para o estado anterior à mudança, mas não apagou as mudanças que foram feitas, pois o commit “estragado” ainda estará lá (*This reverts commit HASH*).
+
+### Apagando tags e branches remotos
+
+Para deletar *tag*, pode usar o comando:
+
+`g tag -d NumeroDaTag` – porém isso apaga apenas localmente.
+
+Para apagar remotamente, usa o comando:
+
+`git push origin : NumeroDaTag`
+
+O mesmo vale para o branch:
+
+`git push origin :NomeDoBranch`
 
 
 
