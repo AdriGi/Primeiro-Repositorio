@@ -58,14 +58,6 @@ Primeiro repositório usado para testar comandos do git e github. O conteúdo po
 
 
 
-
-
-
-
-
-
-
-
 ## Seção 1: Entendendo o que é o Git e Github
 
 Controle de versão: Sistema com a finalidade de gerenciar diferentes versões de um documento. É possível voltar para versões anteriores de um mesmo arquivo. Existem mais de um sistema além do git. 
@@ -196,13 +188,13 @@ Clones de repositório é feito via comando `git clone link_repositório nome`, 
 *Branch* é um ponteiro móvel que leva a um *commit*. Quando criamos um *commit*, cria uma *HASH* (conjunto de números e letras), cada *HASH* indica um snapshot daquele estado. Portanto o branch aponta para esse *commit*, assim o primeiro *branch* que temos se chama master. E o branch master segue o último commit dado.
 
 <p align="center">
-<img src="imagens/branch1.png" width="400" height="200">
+<img src="imagens/branch1.png" width="400" height="170">
 </p>
 
 É possível criar um novo *branch* que aponte para o mesmo *commit*:
 
 <p align="center">
-<img src="imagens/branch2.png" width="400" height="200">
+<img src="imagens/branch2.png" width="400" height="170">
 </p>
 
 Ou pode ter outro *branch* apontando para outro *commit*:
@@ -243,7 +235,7 @@ O *merge* é necessário para fazer a união do *branch* externo com o *branch m
 Ilustrando a situação inicial do arquivo:
 
 <p align="center">
-<img src="imagens/merge1.png" width="400" height="200">
+<img src="imagens/merge1.png" width="370" height="200">
 </p>
 
 Onde temos o *branch maste*r e um *branch* externo iss53.
@@ -391,13 +383,13 @@ Comando usado quando tem arquivos incluído no repositório e você deseja que i
 O uso é simples, primeiro você cria um arquivo usando algum editor e salva como *.gitignore*. O ponto serve para dizer que é um arquivo oculto no linux. Dentro desse arquivo, você vai colocar as extensões ou o arquivo em específico que você deseja que não vá no *commit*. Por exemplo:
 
 <p align="center">
-<img src="imagens/rebase_pratica5.png" width="700" height="150">
+<img src="imagens/extras.png" width="700" height="250">
 </p>
 
 Repare que o arquivo arquivo_qualquer.md não está aparecendo, pois dentro do *.gitignore* está especificado para ignorá-lo. Caso você queira ignorar um conjunto de extensões de arquivo, dentro do *.gitignore*, basta colocar *.extensão, por exemplo: *.py, *.xlsx, *.json, etc.
 
 
-Alguns links interessantes que exploram esse comando: [lista de ignore](https://github.com/github/gitignore) e [documento](https://git-scm.com/docs/gitignore)
+Alguns links interessantes que exploram esse comando: [lista de ignore](https://github.com/github/gitignore) e [documentação](https://git-scm.com/docs/gitignore)
 
 ### Git stash
 
